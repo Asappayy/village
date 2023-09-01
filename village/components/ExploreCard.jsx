@@ -11,7 +11,7 @@ const ExploreCard = ({ id, imgUrl, title, index, active, handleClick }) => {
 
   // Function to open the WhatsApp link
   const openWhatsAppLink = () => {
-    const whatsappNumber = '09151820000';
+    const whatsappNumber = '2349151820000';
     const whatsappMessage = "Hello, I'd like to order " + title;
     const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(whatsappMessage)}`;
     window.open(whatsappUrl, '_blank');

@@ -4,7 +4,7 @@ import { fadeIn } from '../utils/motion';
 
 const InsightCard = ({ imgUrl, title, subtitle, index }) => {
   // Define the WhatsApp number and message
-  const whatsappNumber = '09151820000';
+  const whatsappNumber = '2349151820000';
   const whatsappMessage = "Hi there, I'd like to order some village food.";
 
   // Function to open WhatsApp chat
