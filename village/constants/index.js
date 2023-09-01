@@ -72,17 +72,22 @@ export const socials = [
   {
     name: 'twitter',
     url: '/twitter.svg',
+    link: 'https://twitter.com/thevillagenig', // Replace with your Twitter profile URL
   },
   {
     name: 'linkedin',
     url: '/linkedin.svg',
+    link: 'https://www.linkedin.com/in/your_linkedin_profile', // Replace with your LinkedIn profile URL
   },
   {
     name: 'instagram',
     url: '/instagram.svg',
+    link: 'https://www.instagram.com/thevillageng/?hl=en', // Replace with your Instagram profile URL
   },
   {
     name: 'facebook',
     url: '/facebook.svg',
+    // link: 'https://www.instagram.com/thevillageng/?hl=en', // Replace with your Facebook page URL
   },
+  
 ];

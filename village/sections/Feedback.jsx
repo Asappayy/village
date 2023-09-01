@@ -41,7 +41,7 @@ const Feedback = () => (
         <img
           src="/skrrr.jpg"
           alt="planet-09"
-          className="w-full lg:h-[610px] h-auto min-h-[210px] object-cover rounded-[40px]"
+          className="w-full h-auto max-h-[400px] object-cover rounded-[32px] object-top"
         />
 
         <motion.div
@@ -56,6 +56,35 @@ const Feedback = () => (
         </motion.div>
       </motion.div>
     </motion.div>
+
+    {/* About the CEO Section */}
+    <div className={`${styles.innerWidth} mx-auto flex lg:flex-row flex-col gap-6 mt-12 mb-8`}>
+      <div className="relative flex-1 flex justify-center items-center">
+        <img
+          src="/ray.jpg"
+          alt="CEO"
+          className="w-full h-auto max-h-[500px] object-cover rounded-[32px] object-top"
+        />
+      </div>
+      <div
+        className="flex-[0.8] lg:max-w-[700px] flex flex-col gradient-05 sm:p-8 p-4 rounded-[32px] border-[1px] border-[#6A6A6A] relative mt-4"
+      >
+        <h4 className="font-bold sm:text-[32px] text-[26px] sm:leading-[40.32px] leading-[36.32px] text-white">
+          About the CEO
+        </h4>
+        <p className="mt-[8px] font-normal sm:text-[18px] text-[12px] sm:leading-[22.68px] leading-[16.68px] text-white">
+          Rayfield Odigie
+        </p>
+        <p className="mt-[24px] font-normal sm:text-[24px] text-[18px] sm:leading-[45.6px] leading-[39.6px] text-white">
+          Rayfield Odigie is the driving force behind 'The Village Restaurant and Lounge,' set to launch soon. With deep roots in Nigerian cuisine and over a decade of experience in hospitality, Rayfield is on a mission to provide mouthwatering Nigerian dishes in a serene and elegant setting.
+          <br /><br />
+          Born and raised in Nigeria, Rayfield's passion for authentic Nigerian flavors led him to create 'The Village Restaurant and Lounge.' 
+          As CEO, he brings a wealth of expertise to ensure top-notch services and unforgettable dining experiences.
+          <br /><br />
+          Rayfield envisions The Village Restaurant and Lounge as a cultural hub where tradition and innovation meet. Join him on this gastronomic journey to celebrate the vibrant flavors of Nigeria.
+        </p>
+      </div>
+    </div>
   </section>
 );
 
