@@ -56,7 +56,7 @@ export const insights = [
   },
   {
     imgUrl: '/ogboo.jpg',
-    title: 'Discover! the Essence of Ogbonna with Perfectly Pounded Yam',
+    title: 'Discover! the Essence of Ogbona with Perfectly Pounded Yam',
     subtitle:
       'A Symphony of Flavors: Indulge in the Delightful Fusion of Ogbonna and Creamy Pounded Yam, Unforgettable Gastronomy.  - Click The Arrow To order',
   },

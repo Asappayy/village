@@ -31,6 +31,7 @@ const Feedback = () => (
         <p className="mt-[24px] font-normal sm:text-[24px] text-[18px] sm:leading-[45.6px] leading-[39.6px] text-white">
           “Choose The Village for an unparalleled experience; savor local culinary treasures in an elegant ambiance. Indulge in authenticity, where every bite tells a flavored story.”
         </p>
+        
       </motion.div>
 
       <motion.div
