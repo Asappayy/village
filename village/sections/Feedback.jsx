@@ -1,91 +1,131 @@
-'use client';
-
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-
+import Image from 'next/image';
+import Link from 'next/link'; // Import Link from Next.js
 import styles from '../styles';
-import { fadeIn, staggerContainer, zoomIn } from '../utils/motion';
+import { navVariants } from '../utils/motion';
+import { AiOutlineClose } from 'react-icons/ai'; // Import the close icon
 
-const Feedback = () => (
-  <section className={`${styles.paddings}`}>
-    <motion.div
-      variants={staggerContainer}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: false, amount: 0.25 }}
-      className={`${styles.innerWidth} mx-auto flex lg:flex-row flex-col gap-6`}
-    >
-      <motion.div
-        variants={fadeIn('right', 'tween', 0.2, 1)}
-        className="flex-[0.5] lg:max-w-[370px] flex justify-end flex-col gradient-05 sm:p-8 p-4 rounded-[32px] border-[1px] border-[#6A6A6A] relative"
-      >
-        <div className="feedback-gradient" />
-        <div>
-          <h4 className="font-bold sm:text-[32px] text-[26px] sm:leading-[40.32px] leading-[36.32px] text-white">
-            The Village
-          </h4>
-          <p className="mt-[8px] font-normal sm:text-[18px] text-[12px] sm:leading-[22.68px] leading-[16.68px] text-white">
-            20 Murtala Muhammed Way, Edo!
-          </p>
-        </div>
-
-        <p className="mt-[24px] font-normal sm:text-[24px] text-[18px] sm:leading-[45.6px] leading-[39.6px] text-white">
-          “Choose The Village for an unparalleled experience; savor local culinary treasures in an elegant ambiance. Indulge in authenticity, where every bite tells a flavored story.”
-        </p>
-        
-      </motion.div>
-
-      <motion.div
-        variants={fadeIn('left', 'tween', 0.2, 1)}
-        className="relative flex-1 flex justify-center items-center"
-      >
-        <img
-          src="/skrrr.jpg"
-          alt="planet-09"
-          className="w-full h-auto max-h-[400px] object-cover rounded-[32px] object-top"
-        />
-
-        <motion.div
-          variants={zoomIn(0.4, 1)}
-          className="lg:block hidden absolute -left-[10%] top-[3%]"
+const Dropdown = ({ menuItems, toggleDropdown }) => (
+  <div className="fixed top-0 left-0 w-full h-full bg-primary-black text-white flex flex-col justify-center items-center z-50">
+    <ul>
+      {menuItems.map((item, index) => (
+        <li
+          key={index}
+          className="py-4 px-4 hover:bg-purple-700 text-center text-xl font-semibold"
         >
-          {/* <img
-            src="/stamp.png"
-            alt="stamp"
-            className="w-[155px] h-[155px] object-contain"
-          /> */}
-        </motion.div>
-      </motion.div>
-    </motion.div>
-
-    {/* About the CEO Section */}
-    <div className={`${styles.innerWidth} mx-auto flex lg:flex-row flex-col gap-6 mt-12 mb-8`}>
-      <div className="relative flex-1 flex justify-center items-center">
-        <img
-          src="/ray.jpg"
-          alt="CEO"
-          className="w-full h-auto max-h-[500px] object-cover rounded-[32px] object-top"
-        />
-      </div>
-      <div
-        className="flex-[0.8] lg:max-w-[700px] flex flex-col gradient-05 sm:p-8 p-4 rounded-[32px] border-[1px] border-[#6A6A6A] relative mt-4"
-      >
-        <h4 className="font-bold sm:text-[32px] text-[26px] sm:leading-[40.32px] leading-[36.32px] text-white">
-          About the CEO
-        </h4>
-        <p className="mt-[8px] font-normal sm:text-[18px] text-[12px] sm:leading-[22.68px] leading-[16.68px] text-white">
-          Rayfield Odigie
-        </p>
-        <p className="mt-[24px] font-normal sm:text-[24px] text-[18px] sm:leading-[45.6px] leading-[39.6px] text-white">
-          Rayfield Odigie is the driving force behind 'The Village Restaurant and Lounge,' set to launch soon. With deep roots in Nigerian cuisine and over a decade of experience in hospitality, Rayfield is on a mission to provide mouthwatering Nigerian dishes in a serene and elegant setting.
-          <br /><br />
-          Born and raised in Nigeria, Rayfield's passion for authentic Nigerian flavors led him to create 'The Village Restaurant and Lounge.' 
-          As CEO, he brings a wealth of expertise to ensure top-notch services and unforgettable dining experiences.
-          <br /><br />
-          Rayfield envisions The Village Restaurant and Lounge as a cultural hub where tradition and innovation meet. Join him on this gastronomic journey to celebrate the vibrant flavors of Nigeria.
-        </p>
-      </div>
-    </div>
-  </section>
+          {item === 'About The CEO' ? ( // Check if the menu item is 'About The CEO'
+            <a href="#ceo" onClick={toggleDropdown}>
+              {item}
+            </a>
+          ) : item === 'Dishes Sold' ? ( // Check if the menu item is 'Dishes Sold'
+            <a href="#explore" onClick={toggleDropdown}>
+              {item}
+            </a>
+          ) : item === 'Find Us' ? ( // Check if the menu item is 'Find Us'
+            <a href="#maps" onClick={toggleDropdown}>
+              {item}
+            </a>
+          ) : (
+            // Use Link for other menu items
+            <Link href={`/${item.toLowerCase().replace(/\s+/g, '-')}`}>
+              <a onClick={toggleDropdown}>{item}</a>
+            </Link>
+          )}
+        </li>
+      ))}
+    </ul>
+    <button
+      onClick={toggleDropdown}
+      className="py-2 px-4 mt-8 text-red-500 hover:text-red-700 text-xl"
+    >
+      Close <AiOutlineClose className="inline-block ml-2 text-xl" /> {/* Previous close button */}
+    </button>
+    <button
+      onClick={toggleDropdown}
+      className="absolute top-2 right-2 text-red-500 hover:text-red-700 text-4xl" // Increase text size to 4 times bigger
+      style={{ transform: 'translateX(-50%)' }} // Shift it to align with menu.svg
+    >
+      <AiOutlineClose className="inline-block ml-2 text-xl" /> {/* New close button */}
+    </button>
+  </div>
 );
 
-export default Feedback;
+const Navbar = () => {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const menuItems = [
+    'About The CEO',
+    'Dishes Sold',
+    'Link3', // Link to https://gggg.com
+    'Find Us',
+  ];
+
+  return (
+    <div className="relative">
+      <div className="absolute w-full h-full inset-0 gradient-02" />
+
+      <motion.nav
+        variants={navVariants}
+        initial="hidden"
+        whileInView="show"
+        className={`${styles.xPaddings} py-8 relative z-40`}
+      >
+        <div className={`${styles.innerWidth} mx-auto flex items-center justify-between relative`}>
+          <div className="flex items-center gap-4">
+            <Image
+              src="/villagee.png"
+              alt="logo"
+              width={60}
+              height={60}
+              layout="fixed"
+              className="object-contain filter brightness-0 invert grayscale"
+            />
+          </div>
+          <div className="flex items-center gap-2">
+            <Image
+              src="/village-text.png"
+              alt="logo-text"
+              width={250}
+              height={250}
+              layout="fixed"
+              className="object-contain filter brightness-0 invert grayscale"
+            />
+          </div>
+          <div className="flex items-center gap-8 relative">
+            <button onClick={toggleDropdown}>
+              {isDropdownOpen ? (
+                <div className="text-xl">
+                  <AiOutlineClose /> {/* Previous close button */}
+                </div>
+              ) : (
+                <Image
+                  src="/menu.svg"
+                  alt="menu"
+                  width={24}
+                  height={24}
+                  layout="fixed"
+                  loading="eager"
+                  className="object-contain z-24"
+                />
+              )}
+            </button>
+            {isDropdownOpen && (
+              <Dropdown menuItems={menuItems} toggleDropdown={toggleDropdown} />
+            )}
+          </div>
+        </div>
+      </motion.nav>
+
+      <div className="homepage-content" style={{ position: 'relative', zIndex: 1 }}>
+        {/* Add your homepage content here */}
+      </div>
+    </div>
+  );
+};
+
+export default Navbar;
